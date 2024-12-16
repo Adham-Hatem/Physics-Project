@@ -1,0 +1,105 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException{
+        Scanner console = new Scanner(System.in);
+
+        System.out.print("\t\t~ Physics Project : Electric Motor Rules ~");
+        while(true){
+            Thread.sleep(5000);
+            System.out.print("\n\n\n- Which rule do you want to use? !! Enter the corresponding Number !!\n\n\t1) Ohm's Law.\n\t2) Faraday's Law Of Electromagnetic Induction.\n\t3) Law Of Conservation Of Energy.\n\t4) Law Of Efficiency.\n\t5) Credits.\n\t6) Exit.\n\n>  ");
+            String input = console.next();
+            switch (input) {
+                case "1" -> {
+                    System.out.print("\n\n\n\t ~ V = IR  \\\\  !! Enter '-0' if Unknown !!\n> V = ");
+                    double voltage = console.nextDouble();
+                    System.out.print("> I = ");
+                    double intensity = console.nextDouble();
+                    System.out.print("> R = ");
+                    double resistance = console.nextDouble();
+                    if (voltage == -0) {
+                        voltage = intensity * resistance;
+                        System.out.print("\n\t~ Voltage = " + voltage);
+                    } else if (intensity == -0) {
+                        intensity = voltage / resistance;
+                        System.out.print("\n\t~ Intensity = " + intensity);
+                    } else if (resistance == -0) {
+                        resistance = voltage / intensity;
+                        System.out.print("\n\t~ Resistance = " + resistance);
+                    } else System.out.print("\n\t\t!! ERROR !!");
+                }
+                case "2" -> {
+                    System.out.print("\n\n\n\t~ E = (-N*dΦ) / dt \\\\  !! Enter '-0' if Unknown !!\n\n> E (Induced electromotive force) = ");
+                    double ind_emf = console.nextDouble();
+                    System.out.print("> N (Number of turns in the coil // Enter '1' if not given) = ");
+                    double coil_turns = console.nextDouble();
+                    System.out.print("> Φ (Magnetic Flux) = ");
+                    double flux = console.nextDouble();
+                    System.out.print("> t (Time in Seconds) = ");
+                    double time = console.nextDouble();
+                    if(ind_emf == -0){
+                        ind_emf = (-coil_turns*flux)/time;
+                        System.out.print("\n\t~ Induced Electromotive Force = " + ind_emf);
+                    }
+                    else if(flux == -0){
+                        flux = (ind_emf*time)/coil_turns;
+                        System.out.print("\n\t~ Magnetic Flux = " + flux);
+                    }
+                    else if (time == -0) {
+                        time = (-coil_turns*flux)/ind_emf;
+                        System.out.print("\n\t~ Time (In Seconds) = " + time);
+                    }
+                    else System.out.print("\n\t\t!! ERROR !!");
+                }
+                case "3" -> {
+                    System.out.print("\n\n\n\t~ K1 + U1 = K2 + U2 \\\\ !! Enter '-0' if Unknown !!\n\n> K1 (Initial Kinetic Energy) = ");
+                    double K1 = console.nextDouble();
+                    System.out.print("> U1 (Initial Potential Energy) = ");
+                    double U1 = console.nextDouble();
+                    System.out.print("> K2 (Final Kinetic Energy) = ");
+                    double K2 = console.nextDouble();
+                    System.out.print("> U2 (Final Potential Energy) = ");
+                    double U2  = console.nextDouble();
+                    if(K1 == -0){
+                        K1 = (K2+U2)-U1;
+                        System.out.print("\n\t~ Initial Kinetic Energy = " + K1);
+                    }
+                    else if(U1 == -0){
+                        U1 = (K2+U2)-K1;
+                        System.out.print("\n\t~ Initial Potential Energy = " + U1);
+                    }
+                    else if (K2 == -0) {
+                        K2 = (K1+U1)-U2;
+                        System.out.print("\n\t~ Final Kinetic Energy = " + K2);
+                    }
+                    else if (U2 == -0) {
+                        U2 = (K1+U1)-K2;
+                        System.out.print("\n\t~ Final Potential Energy = " + U2);
+                    } else System.out.print("\n\t\t!! ERROR !!");
+                }
+                case "4" -> {
+                    System.out.print("\n\n\n\t~ n = (Work[out]/Work[in]) * 100 \\\\ !! Enter '-0' if Unknown !!\n\n> n (Efficiency) = ");
+                    double eff = console.nextDouble();
+                    System.out.print("> Work(out) = ");
+                    double w_out = console.nextDouble();
+                    System.out.print("> Work(in) = ");
+                    double w_in = console.nextDouble();
+                    if(eff == -0){
+                        eff = (w_out/w_in)*100;
+                        System.out.print("\n\t~ Efficiency = " + eff);
+                    } else if (w_out == -0) {
+                        w_out = (eff*w_in)/100;
+                        System.out.print("\n\t~ Work(out) = " + w_out);
+                    } else if (w_in == -0) {
+                        w_in = (w_out*100)/eff;
+                        System.out.print("\n\t~ Work(in) = " + w_in);
+
+                    }
+                    else System.out.print("\n\t\t!! ERROR !!");
+                }
+                case "5" -> System.out.print("\n\t<> Coders <>\n\t\t~ Adham Hatem Anwar Gomaa - 24100477.\n\t\t~ Ahmad Elsayed Elsayd Elhelw - 24100483.");
+                case "6" -> System.exit(0);
+            }
+        }
+    }
+}
